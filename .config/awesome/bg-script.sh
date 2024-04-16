@@ -2,7 +2,7 @@
 
 path="/home/angel/wallpapers"
 
-interval=60
+interval=40
 
 while true; do
     for image in "$path"/*; do
