@@ -2,11 +2,18 @@
 
 path="/home/angel/wallpapers"
 
-interval=40
+interval=20
 
 while true; do
     for image in "$path"/*; do
-        feh --no-fehbg --bg-fill "$image"
+        width=$(identify -format "%w" "$image")
+        height=$(identify -format "%h" "$image")
+
+        if ((width > height)); then
+            feh --no-fehbg --bg-fill "$image"
+        else
+            feh --no-fehbg --bg-max "$image"
+        fi
         sleep "$interval"
     done
 done
